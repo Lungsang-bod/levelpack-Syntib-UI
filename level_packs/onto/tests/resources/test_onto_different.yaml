@@ -1,0 +1,9 @@
+legend: [col1_legend, col2_legend, col3_legend, col4_legend]
+ont:
+  category1:
+    subcat1:
+      - [ lemma4, field, fieldd, fielddd, fieldddd ]
+      - [ lemma2, empty,  fields, can ]
+      - [ lemma3, be,     added ]
+    subcat3:
+      - [ lemma5, field5, field6, field7, field8 ]

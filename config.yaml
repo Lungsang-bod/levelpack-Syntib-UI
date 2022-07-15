@@ -1,0 +1,75 @@
+# "local", "drive", "upload" or "download"
+mode: local
+# "bo", "en" and "pt" are currently supported
+lang: bo
+# the relative path to the folder containing the 7 folders of the data
+input: content/A0
+# lines are either sentences ("sent") or chunks of syllables ("chunk")
+line_mode: sentence
+# Google Drive folder ids.
+# add the ids right after each "- ". keep the order from 1 to 5 from the drive folders
+# to find the id, open the folder, take everything following the last "/" in the url
+drive_folders:
+  ontos: 1LFSec-KM_szeutubKwF-KsyI1ZqzzcHZ
+  A0:
+  - 1nVnawUqL93mpdjl-n5swXe--z87XO04V
+  - 1mEwwKzPVlBfqOU_ot3wpgOZJgX9bsj5I
+  - 14tDWQ6CAA-_gXy5xOBDf2AWP52yHZFIL
+  - 1QADuSXVQSSYrwuUkhvJGR3MVSt0ZoWP5
+  - 1mf8jO3gg0dOjj1h6yWJqKEwSv72G3rq8
+  - 1gVAnexeSURDjGb30VN45_xu7kxP_Dffo
+  A1:
+  - abc
+  - def
+  - ghi
+  - jkl
+  - mno
+  - pqr
+  to-simplify:
+  - abc
+  - def
+  - ghi
+  - jkl
+  - mno
+  - pqr
+# levels
+levels:
+- A0
+- A1
+- A2
+- A2+
+- B1
+- B1+
+- B2
+- B2+
+- C1
+- C1+
+legend_template:
+- word
+- lemma
+- POS
+- sense
+- level
+- freq
+- synonyms
+- origin
+- definition
+level_colors:
+  A0: '00FFCC99'
+  A1: '00666699'
+  A2: '00003366'
+  A2+: '00339966'
+  B1: '00003300'
+# POS tags
+pos:
+- མིང་ཚིག
+- རྒྱན་ཚིག
+- ཚབ་ཚིག
+- ཚིག་ཕྲད།
+- བྱ་ཚིག
+- བྱ་གྲོགས།
+- བྱ་མཐའ།
+- ཁྱད་ཚིག
+- བསྣན་ཚིག
+- དྲི་ཚིག
+- ཚེག་ཤད།

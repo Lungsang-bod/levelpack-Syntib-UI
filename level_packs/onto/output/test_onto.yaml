@@ -1,0 +1,14 @@
+legend: [col1_legend, col2_legend, col3_legend, col4_legend, col5_legend]
+ont:
+  Renamed:
+    MovedAndMerged:
+    - [as much as, '', '', '', '']
+    - [lemma, '', '', '', '']
+    - [needed, '', '', '', '']
+    - [nest, '', '', '', '']
+    - [only, '', '', '', '']
+    subcat1:
+    - [lemma1, field1, field2, field3, field4]
+    - [lemma2, empty, fields, can, '']
+    - [lemma3, be, omitted, '', '']
+    - [new lemma, new1, new2, '', '']
