@@ -10,6 +10,8 @@ from .extract_level_content import extract_content
 from .onto_from_tagged import onto_from_tagged
 from .merge_ontos import merge_ontos
 import streamlit as st
+import pandas as pd
+import os
 
 
 
@@ -42,12 +44,20 @@ def create_pack(
         st.write(
             'Exiting: "content" folder did not exist. Please add some files to segment and rerun.'
         )
-        uploaded_files = st.file_uploader("CHOOSE A FILE TO BE UPLOADED IN DOCX-RAW", accept_multiple_files=True)
-        for uploaded_file in uploaded_files:
-            bytes_data = uploaded_file.read()
-            st.write("filename:", uploaded_file.name)
-            st.write(bytes_data)
-        return
+        data_file = st.file_uploader("Upload raw file", type=["csv"])
+
+        if data_file is not None:
+            file_details = {"filename": data_file.name, "filetype": data_file.type, "filesize": data_file.size}
+
+            st.write(file_details)
+            df = pd.read_csv(data_file)
+            st.dataframe(df)
+
+            with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0/1 docx-raw", data_file.name),"wb") as f:
+                f.write(data_file.getbuffer())
+
+            st.success("File saved uploaded in content/A0")
+
 
 
     if mode == "local":
