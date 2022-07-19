@@ -5,3 +5,5 @@ openpyxl
 tibetan_sort
 pypandoc
 python-docx
+streamlit
+pandas
