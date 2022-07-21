@@ -53,7 +53,7 @@ def create_pack(
             df = pd.read_csv(data_file)
             st.dataframe(df)
 
-            with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0/1 docx-raw", data_file.name),
+            with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0", data_file.name),
                       "wb") as f:
                 f.write(data_file.getbuffer())
 
