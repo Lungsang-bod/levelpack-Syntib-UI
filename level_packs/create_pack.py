@@ -2,6 +2,10 @@ from pathlib import Path
 
 import yaml
 
+import streamlit as st
+import pandas as pd
+import os
+
 from .corpus_segment import Tokenizer
 from .google_drive import upload_to_drive, download_drive
 from .generate_to_tag import generate_to_tag
@@ -9,9 +13,6 @@ from .convert2plaintxt import convert2plaintxt
 from .extract_level_content import extract_content
 from .onto_from_tagged import onto_from_tagged
 from .merge_ontos import merge_ontos
-import streamlit as st
-import pandas as pd
-import os
 
 
 def create_pack(
@@ -44,20 +45,13 @@ def create_pack(
         st.write(
             'Exiting: "content" folder did not exist. Please add some files to segment and rerun.'
         )
-        data_file = st.file_uploader("Upload raw file", type=["csv"])
+    data_file = st.file_uploader("Upload raw file", type=["csv"])
 
-        if data_file is not None:
-            file_details = {"filename": data_file.name, "filetype": data_file.type, "filesize": data_file.size}
+    with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0/1 docx-raw", data_file.name),
+              "wb") as f:
+        f.write(data_file.getbuffer())
 
-            st.write(file_details)
-            df = pd.read_csv(data_file)
-            st.dataframe(df)
-
-            with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0", data_file.name),
-                      "wb") as f:
-                f.write(data_file.getbuffer())
-
-            st.success("File saved uploaded in content/A0")
+    st.success("File uploaded in content/A0/1 docx-raw")
 
     if mode == "local":
         create_pack_local(path_ids, lang=lang, line_mode=line_mode, l_colors=l_colors, pos=pos, levels=levels,
