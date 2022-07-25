@@ -94,10 +94,10 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
             # 2. mark all text to be extracted using a given style
             st.write('\t--> Please apply the style to all text to be extracted.')
 
-        with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0/1 docx-raw/A0.01-vocab (1).docx")) as f:
+        with open(os.path.join(
+                "/home/lungsang/Desktop/levelpack-UI/content/A0/1 docx-raw/A0.01-vocab (1).docx")) as f:
             st.download_button('Download the file to be styled', f)
-
-
+        st.success("File Downloaded")
 
         # 3. extract all marked text
         out_file = None

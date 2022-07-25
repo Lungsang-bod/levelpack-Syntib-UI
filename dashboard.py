@@ -14,4 +14,5 @@ if choice == "Levelpack-UI":
 
 elif choice == "Syntib-UI":
     st.title("Welcome to Syntib-UI")
-
+    process = subprocess.call(["streamlit", "run", os.path.join(
+        '/home', 'lungsang', 'Desktop', 'syntib', 'usage.py')])
