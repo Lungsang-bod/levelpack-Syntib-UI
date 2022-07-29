@@ -95,7 +95,7 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
             # 2. mark all text to be extracted using a given style
             st.write('\t--> Please apply the style to all text to be extracted.')
 
-        f = open("/home/lungsang/Desktop/levelpack-UI/content/A0/2 docx-text-only/A0.01-vocab (1)_textonly.docx", 'rb')
+        f = open("/home/lungsang/Desktop/levelpack-UI/content/A0/2 docx-text-only/A0.02-vocab_textonly.docx", 'rb')
 
         docx_byte = f.read()
         base64_bytes = base64.b64encode(docx_byte)
@@ -103,13 +103,13 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
         st.download_button('Download the file', base64_docx)
         st.success("File Downloaded")
 
-        data_file = st.file_uploader("Upload raw file", key='123', type=["docx"])
+        data_file = st.file_uploader("Upload raw file", key='01', type=["docx"])
 
-        with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0/3 to-segment", data_file.name),
+        with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0/2 docx-text-only", data_file.name),
                   "wb") as f:
             f.write(data_file.getbuffer())
 
-        st.success("File uploaded in content/A0/4 segmented")
+        st.success("File uploaded in content/A0/2 docx-text-only")
 
         # 3. extract all marked text
         out_file = None
@@ -133,6 +133,14 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
 
             # 6. manually correct the segmentation
             st.write("\t--> Please manually correct the segmentation.")
+
+            data_file = st.file_uploader("Upload raw file", key='02', type=["txt"])
+
+            with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0/4 segmented", data_file.name),
+                      "wb") as f:
+                f.write(data_file.getbuffer())
+
+            st.success("File uploaded in content/A0/4segmented")
 
         # 7. create the _totag.xlsx in to_tag from the segmented .txt file from segmented
         if cur == 5:
@@ -167,6 +175,14 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
                     "\t--> Please manually tag new words with their POS tag and level. (words not tagged will be ignored)"
                 )
 
+                data_file = st.file_uploader("Upload raw file", key='03', type=["xlsx"])
+
+                with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0/4 segmented", data_file.name),
+                          "wb") as f:
+                    f.write(data_file.getbuffer())
+
+                st.success("File uploaded in content/A0/5to-tag")
+
         # 9. create .yaml ontology files from tagged .xlsx files from to_tag
         if cur == 6:
             if has_ontos_unfinished:
@@ -193,6 +209,13 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
             '\t--> Please integrate new words in the onto from "to_organize" sections and add synonyms.'
         )
         has_ontos_unfinished = True
+        data_file = st.file_uploader("Upload raw file", key='04', type=["yaml"])
+
+        with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/ontos/A0", data_file.name),
+                  "wb") as f:
+            f.write(data_file.getbuffer())
+
+        st.success("File uploaded in content/ontos/A0/")
 
     # 10. merge into the level onto
     # check that all the raw docx files have corresponding ontos
@@ -213,6 +236,10 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
         merge_ontos(level_ontos, master)
 
     write_to_upload(new_files)
+
+    f = open("/home/lungsang/Desktop/levelpack-UI/content/ontos/master_onto.yaml")
+
+    st.download_button('Download the file', f)
 
 
 def current_state(paths_ids):

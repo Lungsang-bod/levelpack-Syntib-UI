@@ -1,0 +1,2 @@
+content/ontos/A0_onto.yaml
+content/ontos/A0/A0.02-vocab_onto.yaml
