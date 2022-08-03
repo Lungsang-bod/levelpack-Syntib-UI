@@ -95,12 +95,12 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
             # 2. mark all text to be extracted using a given style
             st.write('\t--> Please apply the style to all text to be extracted.')
 
-        f = open("/home/lungsang/Desktop/levelpack-UI/content/A0/2 docx-text-only/A0.02-vocab_textonly.docx", 'rb')
+        data = open("/home/lungsang/Desktop/streamlit-practice/content/A0/A0.02-vocab.docx", "rb").read()
 
-        docx_byte = f.read()
-        base64_bytes = base64.b64encode(docx_byte)
-        base64_docx = base64_bytes.decode('utf-8')
-        st.download_button('Download the file', base64_docx)
+        encoded = base64.b64encode(data)
+        decoded = base64.b64decode(encoded)
+
+        st.download_button('Download Here', decoded, "decoded_file.docx")
         st.success("File Downloaded")
 
         data_file = st.file_uploader("Upload raw file", key='01', type=["docx"])
