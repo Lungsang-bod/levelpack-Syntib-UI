@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="132a092e-5310-4df2-a1b4-0171915b6769" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_packs/create_pack.py" beforeDir="false" afterPath="$PROJECT_DIR$/level_packs/create_pack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/A0/1 docx-raw/A0.02-vocab.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/A0/1 docx-raw/A0.03-vocab.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/A0/2 docx-text-only/A0.02-vocab_textonly.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/A0/3 to-segment/A0.02-vocab_tosegment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/A0/4 segmented/A0.02-vocab_segmented.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/A0/5 to-tag/A0.02-vocab.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/A0/5 to-tag/A0.02-vocab_totag (1).xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/A0/5 to-tag/A0.02-vocab_totag.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/ontos/A0/A0.02-vocab_onto.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/ontos/A0_onto.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/ontos/master_onto.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/to_upload.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
