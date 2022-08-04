@@ -1,0 +1,1 @@
+content/ontos/A0_onto.yaml
