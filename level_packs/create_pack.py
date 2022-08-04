@@ -48,7 +48,8 @@ def create_pack(
     # )
 
     # upload 0
-    data_file = st.file_uploader("Upload raw file", type=["docx"])
+    st.subheader("A. upload raw data")
+    data_file = st.file_uploader("", type=["docx"])
 
     with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0/1 docx-raw", data_file.name),
               "wb") as f:
@@ -95,9 +96,10 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
             new_files.append(out_file)
 
             # 2. mark all text to be extracted using a given style
-            st.write('\t Please download the file and apply the style to all text to be extracted.')
+            # st.write('\t Please download the file and apply the style to all text to be extracted.')
 
         # download 1
+        st.subheader("B. please download the file to style and upload again for segmentation.")
         data = open("/home/lungsang/Desktop/levelpack-UI/content/A0/2 docx-text-only/A0.02-vocab_textonly.docx", "rb") \
             .read()
 
@@ -105,10 +107,11 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
         decoded = base64.b64decode(encoded)
 
         st.download_button('Download Here', decoded, "A0.02-vocab_textonly.docx", key='01')
-        st.success("File Downloaded")
+
+        # st.success("File Downloaded")
 
         # upload 1
-        data_file = st.file_uploader("Upload the file for segmentation ", key='02', type=["docx"])
+        data_file = st.file_uploader("", key='02', type=["docx"])
 
         with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0/2 docx-text-only", data_file.name),
                   "wb") as f:
@@ -137,9 +140,10 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
             new_files.append(out_file)
 
             # 6. manually correct the segmentation
-            st.write("\tPlease download the file and manually correct the segmentation.")
+            # st.write("\tPlease download the file and manually correct the segmentation.")
 
         # download 2
+        st.subheader("C. please manually correct the segmentation and upload again.")
         data = open("/home/lungsang/Desktop/levelpack-UI/content/A0/4 segmented/A0.02-vocab_segmented.txt",
                     "rb").read()
 
@@ -147,10 +151,9 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
         decoded = base64.b64decode(encoded)
 
         st.download_button('Download Here', decoded, "A0.02-vocab_segmented.txt", key='02')
-        st.success("File Downloaded")
 
         # upload 2
-        data_file = st.file_uploader("Upload the corrected segmentation", key='03', type=["txt"])
+        data_file = st.file_uploader("", key='03', type=["txt"])
 
         with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0/4 segmented", data_file.name),
                   "wb") as f:
@@ -190,9 +193,10 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
                 # print(
                 "\t--> Please manually tag new words with their POS tag and level. (words not tagged will be ignored)"
                 # )
-                st.write("Please download the file and manually tag new words with their POS tag and level")
+                # st.write("Please download the file and manually tag new words with their POS tag and level")
 
         # download 3
+        st.subheader("D. please tag new words with their POS tag and level")
         data = open("/home/lungsang/Desktop/levelpack-UI/content/A0/5 to-tag/A0.02-vocab_totag.xlsx",
                     "rb").read()
 
@@ -200,11 +204,10 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
         decoded = base64.b64decode(encoded)
 
         st.download_button('Download Here', decoded, "A0.02-vocab_totag.xlsx", key='03')
-        st.success("File Downloaded")
 
         # upload 3
 
-        data_file = st.file_uploader("Upload the tagged file", key='04', type=["xlsx"])
+        data_file = st.file_uploader("", key='04', type=["xlsx"])
 
         with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0/5 to-tag", data_file.name),
                   "wb") as f:
@@ -213,7 +216,7 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
         st.success("File uploaded in content/A0/5 to-tag")
 
         # download 4
-        st.write("DOWNLOAD THE TAGGED FILE FOR ADDITIONAL TAGGING")
+        st.subheader("E. please download the tagged file for additional tagging")
         data = open("/home/lungsang/Desktop/levelpack-UI/content/A0/5 to-tag/A0.02-vocab_totag.xlsx",
                     "rb").read()
 
@@ -221,11 +224,10 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
         decoded = base64.b64decode(encoded)
 
         st.download_button('Download Here', decoded, "A0.02-vocab_totag.xlsx", key='04')
-        st.success("File Downloaded")
 
         # upload 4
 
-        data_file = st.file_uploader("Upload the additional-tagged file", key='05', type=["xlsx"])
+        data_file = st.file_uploader("", key='05', type=["xlsx"])
 
         with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/A0/5 to-tag", data_file.name),
                   "wb") as f:
@@ -262,7 +264,7 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
 
         # download 5
 
-        st.write("DOWNLOAD THE ONTO FILE TO BE EDITED")
+        st.subheader("F. please edit the onto file and upload again.")
         data = open("/home/lungsang/Desktop/levelpack-UI/content/ontos/A0/A0.02-vocab_onto.yaml",
                     "rb").read()
 
@@ -270,10 +272,9 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
         decoded = base64.b64decode(encoded)
 
         st.download_button('Download Here', decoded, "A0.02-vocab_onto.yaml", key='04')
-        st.success("File Downloaded")
 
         # upload 5
-        data_file = st.file_uploader("UPLOAD EDITED ONTO FILE", key='05', type=["yaml"])
+        data_file = st.file_uploader("", key='05', type=["yaml"])
 
         with open(os.path.join("/home/lungsang/Desktop/levelpack-UI/content/ontos/A0", data_file.name),
                   "wb") as f:
@@ -301,10 +302,14 @@ def create_pack_local(path_ids, lang="bo", line_mode="chunk", l_colors=None, pos
 
     write_to_upload(new_files)
 
-    # download 5
-    f = open("/home/lungsang/Desktop/levelpack-UI/content/ontos/master_onto.yaml")
+    # download 6 (master onto)
+    data = open("/home/lungsang/Desktop/levelpack-UI/content/ontos/master_onto.yaml",
+                "rb").read()
 
-    st.download_button('Download the master onto', f)
+    encoded = base64.b64encode(data)
+    decoded = base64.b64decode(encoded)
+
+    st.download_button('Download the master onto here', decoded, "master_onto.yaml", key='04')
 
 
 def current_state(paths_ids):
@@ -377,7 +382,7 @@ def prepare_folders(content_path, sub_folders):
     # root
     if not content_path.is_dir():
         missing = True
-        st.write(f'folder "{content_path}" does not exist. Creating it...')
+        # st.write(f'folder "{content_path}" does not exist. Creating it...')
         content_path.mkdir()
 
     # workflow subfolders
