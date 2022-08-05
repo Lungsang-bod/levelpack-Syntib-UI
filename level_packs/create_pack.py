@@ -1,12 +1,10 @@
-import base64
-from pathlib import Path
 
 import yaml
-
+import base64
 import streamlit as st
-import pandas as pd
 import os
 
+from pathlib import Path
 from .corpus_segment import Tokenizer
 from .google_drive import upload_to_drive, download_drive
 from .generate_to_tag import generate_to_tag
