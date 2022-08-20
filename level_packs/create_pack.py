@@ -1,4 +1,3 @@
-
 import yaml
 import base64
 import streamlit as st
@@ -12,6 +11,12 @@ from .convert2plaintxt import convert2plaintxt
 from .extract_level_content import extract_content
 from .onto_from_tagged import onto_from_tagged
 from .merge_ontos import merge_ontos
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+
+gauth = GoogleAuth()
+gauth.LocalWebserverAuth()
+drive = GoogleDrive(gauth)
 
 
 def create_pack(
@@ -46,6 +51,16 @@ def create_pack(
     # )
 
     # upload 0
+
+    path = "/home/lungsang/Desktop/levelpack-UI/content/A0/1 docx-raw/"
+
+    folder = '1tuQxaiDOdbfv1JHXNAln2nbq1IvBOrmP'
+
+    file_list = drive.ListFile({'q': f"'{folder}' in parents and trashed=false"}).GetList()
+    for index, file in enumerate(file_list):
+        print(index + 1, 'file Downloaded : ', file['title'])
+        file.GetContentFile(path + file['title'])
+
     st.subheader("A. upload raw data")
     data_file = st.file_uploader("", type=["docx"])
 
