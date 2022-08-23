@@ -1,4 +1,4 @@
-# levelpack-syntib-UI
-UI for levelpack-syntib
+# levelpack-UI
+UI for levelpack
 
 
