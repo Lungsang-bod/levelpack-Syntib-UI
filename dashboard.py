@@ -1,4 +1,10 @@
 import streamlit as st
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+
+gauth = GoogleAuth()
+gauth.LocalWebserverAuth()
+drive = GoogleDrive(gauth)
 
 
 def intro():
@@ -30,9 +36,8 @@ def intro():
 
 # level pack
 def levelpack_ui():
-    import sys
-    sys.path.append("/home/lungsang/Desktop/UI/levelpacks")
-    import usage
+    from levelpacks.level_packs import create_packs
+    create_packs()
 
 
 # Syntib

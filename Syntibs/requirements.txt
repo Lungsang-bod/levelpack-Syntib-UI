@@ -1,0 +1,9 @@
+openpyxl
+pyyaml
+lark
+nltk
+pdf2image
+data
+tempdir
+python-docx
+

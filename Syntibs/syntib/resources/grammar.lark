@@ -1,0 +1,116 @@
+s: sentence
+        | enum* np+ -> np
+        | chikjena_p
+        | adv_p
+        | adj_p
+        | ladon_p
+        | jedra_p
+        | dreldra_p
+        | sent_nom
+        | jungkhung_p
+        | nom_dreldra_p
+        | nom_ladon_p
+        | sent_ladon_p
+        | sent_adv_p
+        | ladon_p np
+        | jungkhung_p np
+
+// root nodes are defined at instanciation of Lark class. "np" and "sentence" currently allowed.
+sentence.5: ((adv_p | np | enum | jedra_p | adj_p | ladon_p | nom_ladon_p | sent_ladon_p | chikjena_p | jungkhung_p | dreldra_p | det_np | adj_np)* vp+ (DZOKTSIK | LHAKCHE | GYENDU | ZHING | ZHES | ZHEO | ZHENA | PUNCT)*)+
+
+// VP
+vp: VNEG* VERB VPART? CONJ? VQUES? EMPH? DZOKTSIK?
+
+// NP and DRELDRA_P
+enum: (np DANGDRA)+
+np.3: (dreldra_p | nom_dreldra_p)? ADJ* (NOUN | PRON | sent_nom | NQUES) (ADJ | adj_p)* (DET | DQUES | VERB_NOM)* PL* GYENDU? NIDRA? PUNCT*
+  | sentence (VERB_NOM | NOM) GYENDU? NIDRA? PUNCT*
+dreldra_p.2: ((np | enum) | adv_p | sent_adv_p)  DRELDRA GYENDU? PUNCT*
+nom_dreldra_p: sentence NOM DRELDRA PUNCT* | sentence NOM_DREL PUNCT*
+sent_nom.0: sentence NOM
+det_np.0: DET -> np
+
+// ADJ_P
+adj_p.3: adv_p? dreldra_p? ADJ+ PUNCT*
+adj_np.0: ADJ+ -> np
+
+// other phrases
+jedra_p: ((np | enum) | adv_p | sent_adv_p) JEDRA GYENDU? PUNCT*
+
+ladon_p.2: ((np | enum) | adv_p | sent_adv_p) LADON+ GYENDU? PUNCT*
+sent_ladon_p: sentence LADON PUNCT*
+
+chikjena_p.3: sentence CHIKJENA GYENDU? PUNCT*
+
+adv_p.2: ADJ? dreldra_p? ADV+ GYENDU? PUNCT*
+sent_adv_p: sentence ADV+
+adv_np: adv_p DET -> np
+
+nom_ladon_p: sentence (NOM LADON | NOM_LADON) GYENDU? PUNCT*
+jungkhung_p: ((np | enum) | adv_p | sent_adv_p) JUNGKHUNG GYENDU? PUNCT*
+
+//
+// Have corresponding clauses
+//
+LADON: "སུ་" | "-ར་" | "རུ་" | "དུ་" | "ན་" | "ལ་" | "ཏུ་"
+DRELDRA: "གི་" | "ཀྱི་" | "གྱི་" | "-འི་" | "ཡི་"
+JEDRA: "གིས་" | "ཀྱིས་" | "གྱིས་" | "-ས་" | "ཡིས་"
+JUNGKHUNG: "ནས་" | "ལས་"
+
+//
+// part of clauses
+//
+GYENDU: "ཀྱང་" | "ཡང་" | "-འང་"
+NIDRA: "ནི་"
+CHIKJENA: "ན་"
+DANGDRA: "དང་"
+JEDU: "གམ་" | "ངམ་" | "དམ་" | "ནམ་" | "བམ་" | "མམ་" | "-འམ་" | "རམ་" | "ལམ་" | "སམ་" | "ཏམ་"
+PL: "ཚོ་" | "རྣམས་" | "དག་"| "རྣམ་པ་"
+
+//
+// end sentences
+//
+DZOKTSIK: "གོ་" | "ངོ་" | "དོ་" | "ནོ་" | "བོ་" | "མོ་" | "-འོ་" | "རོ་" | "ལོ་" | "སོ་" | "ཏོ་"
+ZHIG: "ཞིག་" | "ཅིག་" | "ཤིག་"  // imperative, article
+
+//
+// link clauses
+//
+LHAKCHE: "ཏེ་" | "དེ་" | "སྟེ་"
+ZHING: "ཞིང་" | "ཅིང་" | "ཤིང་"
+ZHES: "ཞེས་" | "ཅེས་"
+ZHEO: "ཞེའོ་" | "ཅེའོ་" | "ཤེའོ་"  // ཟེར་རོ་
+ZHENA: "ཞེ་ན་" | "ཅེ་ན་" | "ཤེ་ན་" // ཟེར་ན་
+
+//
+// Nominalizers
+//
+NOM: "པ་" | "བ་" | "ཡ་"
+VERB_NOM: "མཁན་" | "ཅན་" | "ལྡན་"
+NOM_DREL: "པའི་" | "བའི་"
+NOM_LADON: "བར་" | "པར་"
+
+VNEG: "མ་" | "མི་"
+VPART: "གྲབས་" | "བཞིན་"
+
+// directional adverbs (closed class)
+// DIR: "ཡ་" | "མ་" | "གཡས་" | "གཡོན་" | "ཕ་" | "ཚུ་" | "མདུན་" | "རྒྱབ་" | "སྟེང་" | "སྒང་" | "འོག་"
+
+//
+// Interrogatives
+//
+VQUES.3: "ག་" | "གས་" | "ངས་" | "པས་" | "བ་"
+NQUES.3:  "ག་འདྲའི་" | "ག་ནས་" | "ག་པ་" | "ག་ཚོད་" | "ག་རེ་" | "སུ་"
+DQUES: "ག་གི་"
+
+//
+// Emphasis
+//
+EMPH: "དང་" | "ད་" | "དྰ་" | "ཨ་"
+
+// OPENCLASS TERMINALS
+{}
+//
+
+%import common.WS
+%ignore WS

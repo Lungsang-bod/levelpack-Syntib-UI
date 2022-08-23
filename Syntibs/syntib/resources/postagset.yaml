@@ -1,0 +1,29 @@
+ཁྱད་ཚིག: DET
+དྲི་ཚིག: QUES
+བསྣན་ཚིག: ADV
+བྱ་གྲོགས།:
+  དགག་ཚིག: VNEG
+  བྱ་བ་འབྲེལ་ཚིག: NOM_DREL  # add NOM_LADON
+  བྱ་བའི་རྣམ་པ།: VPART
+  བྱ་མིང་།: NOM
+བྱ་མཐའ།: CONJ
+བྱ་ཚིག: VERB
+མིང་ཚིག: NOUN
+ཚབ་ཚིག: PRON
+ཚིག་ཕྲད།:
+  དང་སྒྲ།: DANGDRA
+  བྱེད་སྒྲ།: JEDRA
+  ཞིག: ZHIG
+  ཞིང་།: ZHING
+  ཞེ་ན།: ZHENA
+  ཞེའོ།: ZHEO
+  ཞེས།: ZHES
+  འབྱུང་ཁུངས།: JUNGKHUNG
+  འབྱེད་འདུས།: JEDU
+  འབྲེལ་སྒྲ།: DRELDRA
+  རྒྱན་སྡུད།: GYENDU
+  རྫོགས་ཚིག: DZOKTSIK
+  ལ་དོན།: LADON
+  ལྷག་བཅས།: LHAKCHE
+ཚེག་ཤད།: PUNCT
+རྒྱན་ཚིག: ADJ
